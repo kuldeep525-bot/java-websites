@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Programming</title>
+    <style>
+      :root {
+        --accent: #ffcc00;
+        --dark: #0b0b0b;
+        --text: #333;
+        --bg: #f9fafc;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* ---------- Header ---------- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      header img {
+        width: 60px;
+        border-radius: 12%;
+        transition: transform 0.4s ease;
+      }
+      header img:hover {
+        transform: scale(1.08) rotate(4deg);
+      }
+
+      header h1 {
+        color: var(--accent);
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        gap: 15px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        transition: color 0.3s ease;
+        padding: 6px 10px;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        min-height: 100vh;
+        padding: 150px 20px 100px;
+        background: linear-gradient(135deg, #ffffff, #f2f2f2);
+      }
+
+      .hero img {
+        width: 360px;
+        border-radius: 18px;
+        margin: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .hero-text {
+        max-width: 520px;
+        margin: 20px;
+        text-align: left;
+      }
+
+      .hero-text h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+      }
+
+      .hero-text p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 25px;
+      }
+
+      .hero-text button {
+        padding: 12px 35px;
+        background: linear-gradient(90deg, var(--accent), #ffe45c);
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(255, 204, 0, 0.6);
+      }
+      .hero-text button:hover {
+        background: #000;
+        color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      /* ---------- Info Section ---------- */
+      .info {
+        max-width: 1100px;
+        margin: 100px auto;
+        text-align: center;
+        padding: 0 25px;
+      }
+
+      .info h2 {
+        font-size: 2rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .info h2::after {
+        content: "";
+        position: absolute;
+        left: 20%;
+        bottom: -8px;
+        width: 60%;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 5px;
+      }
+
+      .info p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #555;
+        margin: 20px 0;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        letter-spacing: 1px;
+        font-size: 0.95rem;
+      }
+
+      footer span {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 992px) {
+        header {
+          flex-direction: column;
+          padding: 15px 20px;
+        }
+
+        header h1 {
+          font-size: 1.5rem;
+          margin-top: 8px;
+        }
+
+        nav {
+          margin-top: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          flex-direction: column;
+          padding-top: 130px;
+          text-align: center;
+        }
+
+        .hero img {
+          width: 280px;
+        }
+
+        .hero-text h2 {
+          font-size: 2rem;
+        }
+
+        .hero-text {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3rem;
+        }
+        nav a {
+          font-size: 0.9rem;
+          margin: 4px;
+        }
+        .hero-text h2 {
+          font-size: 1.6rem;
+        }
+        .hero-text p {
+          font-size: 0.95rem;
+        }
+        .info h2 {
+          font-size: 1.5rem;
+        }
+        footer {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img src="java.jpg" alt="Java Logo" />
+      <h1>Java Programs Hub</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="program.html">Programs</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <img src="java.jpg" alt="Java" />
+      <div class="hero-text">
+        <h2>Master the Power of Java</h2>
+        <p>
+          Learn to build powerful applications with Java — from mobile to
+          enterprise level. Discover the simplicity, portability, and
+          versatility that make Java a developer’s favorite.
+        </p>
+        <button onclick="window.location.href='program.html'">
+          Start Learning
+        </button>
+      </div>
+    </section>
+
+    <section class="info">
+      <h2>Introduction to Java</h2>
+      <p>
+        Java is an object-oriented programming language developed by Sun
+        Microsystems (now Oracle). It’s platform-independent and enables
+        developers to write once, run anywhere using the JVM.
+      </p>
+
+      <h2>History of Java</h2>
+      <p>
+        Developed by James Gosling in the early 1990s, Java revolutionized
+        programming with its reliability and platform independence. From Oak to
+        Java 21, it continues to evolve with modern features.
+      </p>
+
+      <h2>Why Learn Java?</h2>
+      <p>
+        Java powers millions of devices — Android apps, enterprise servers,
+        cloud platforms, and beyond. Mastering Java opens opportunities in
+        software engineering, AI, and cloud development.
+      </p>
+    </section>
+
+    <footer>
+      © 2025 <span>Java Learning Hub</span> | Designed by Kuldeep Kumar
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Programs Hub</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #0b0b0b;
+        --bg-card: #1a1a2e;
+        --accent: #ffcc00;
+        --text-light: #ffffff;
+        --text-muted: #fcfbfb;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f0f17, #1b1b2f);
+        color: var(--text-light);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 60px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+      }
+
+      header img {
+        width: 50px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      header img:hover {
+        transform: rotate(8deg) scale(1.1);
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        color: var(--accent);
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        gap: 15px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 600;
+        position: relative;
+        transition: color 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* ===== CONTAINER ===== */
+      .container {
+        display: grid;
+        grid-template-columns: 1.2fr 1.5fr 2fr;
+        gap: 20px;
+        padding: 110px 20px 20px;
+        height: calc(100vh - 100px);
+      }
+
+      .list-box {
+        background: var(--bg-card);
+        border-radius: 14px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        overflow-y: auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .list-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2);
+      }
+
+      .list-box h3 {
+        color: #ffeb3b;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.08);
+        padding: 10px 15px;
+        color: rgb(248, 242, 242);
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        word-wrap: break-word;
+      }
+
+      a:hover {
+        color: #fff;
+        transform: scale(1.03);
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+        background: whitesmoke;
+        color: #fff;
+      }
+
+      /* ===== SCROLLBAR ===== */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #222;
+      }
+
+      footer {
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        letter-spacing: 1px;
+        font-size: 0.95rem;
+      }
+
+      footer span {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* ===== RESPONSIVENESS ===== */
+
+      /* --- Tablets (<= 992px) --- */
+      @media (max-width: 992px) {
+        header {
+          flex-wrap: wrap;
+          justify-content: center;
+          text-align: center;
+          gap: 10px;
+        }
+
+        header h1 {
+          font-size: 1.3rem;
+        }
+
+        .container {
+          grid-template-columns: 1fr;
+          height: auto;
+          padding-top: 130px;
+        }
+
+        iframe {
+          height: 400px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+      }
+
+      /* --- Phones (<= 600px) --- */
+      @media (max-width: 600px) {
+        header {
+          flex-direction: column;
+          gap: 6px;
+          padding: 12px;
+        }
+
+        header img {
+          width: 40px;
+        }
+
+        header h1 {
+          font-size: 1.1rem;
+        }
+
+        nav {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        nav a {
+          font-size: 0.85rem;
+        }
+
+        .list-box {
+          padding: 15px;
+        }
+
+        .list-box h3 {
+          font-size: 1rem;
+        }
+
+        a {
+          font-size: 0.9rem;
+          padding: 8px 10px;
+        }
+
+        iframe {
+          height: 300px;
+        }
+      }
+
+      /* --- Extra Small Devices (<= 400px) --- */
+      @media (max-width: 400px) {
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav a {
+          font-size: 0.8rem;
+        }
+
+        header h1 {
+          font-size: 1rem;
+        }
+
+        iframe {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="java.jpg" alt="Java Logo" />
+      <h1>Java Programs Hub</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="program.html" class="active">Programs</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Left: Topics -->
+      <div class="list-box" id="topics">
+        <h3>Topics</h3>
+        <ul>
+          <li><a href="#" onclick="showPrograms('applets')">1. Applets</a></li>
+          <li>
+            <a href="#" onclick="showPrograms('basic')"
+              >2. Basic Programming Constructs</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('dataconver')"
+              >3. Data Conversion</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('dem')"
+              >4. Delegation Event Model</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('exception')"
+              >5. Exception Handling</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('function')">6. Functions</a>
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('awt')"
+              >7. Graphical User Interface (AWT)</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('inheritance')">8. Inheritance</a>
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('inputoutput')"
+              >9. Input/Output</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('interface')">10. Interfaces</a>
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('jdbc')"
+              >11. Java Database Connectivity</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('multi_arrays')"
+              >12. Multi-Dimension Arrays</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('mt')">13. Multithreading</a>
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('oops')"
+              >14. Object Oriented Programming</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('package')">15. Packages</a>
+          </li>
+          <li>
+            <a href="#" onclick="showPrograms('single_arrays')"
+              >16. Single Dimension Arrays</a
+            >
+          </li>
+          <li><a href="#" onclick="showPrograms('string')">17. Strings</a></li>
+        </ul>
+      </div>
+
+      <!-- Middle: Program List -->
+      <div class="list-box" id="programList">
+        <h3>Program List</h3>
+        <p>Select a topic to view its programs.</p>
+      </div>
+
+      <!-- Right: Code Viewer -->
+      <div class="list-box">
+        <h3>Program Code</h3>
+        <iframe id="codeFrame" src=""></iframe>
+      </div>
+    </div>
+    <footer>
+      © 2025 <span>Java Learning Hub</span> | Designed by Kuldeep Kumar
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
